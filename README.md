@@ -1,7 +1,7 @@
 ### Saud's-Portfolio
 Data Science Portfolio Example
 
-### Multiple Linear Regression
+### Multiple Linear Regression Model
 Here is a multiple linear regression model I worked on which was implemented using Scikit-Learn, which is one of the most popular
 machine learning libraries for Python. The dataset is "LaptopSales.csv". We make use of features of laptops to
 predict their sale price.
