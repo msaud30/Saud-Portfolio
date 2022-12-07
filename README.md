@@ -46,7 +46,7 @@ sales.isnull().any()
 ![image](https://user-images.githubusercontent.com/63278449/206063672-6bdfc93c-f9d4-44cd-ae29-53394d9c4f0c.png)
 
 
-### Correlation Heatmap
+### Correlation chart to show our correlated values
 corr = sales.corr()
 
 corr
