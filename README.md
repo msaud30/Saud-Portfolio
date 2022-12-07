@@ -20,6 +20,7 @@ import pandas as pd
 
 ### Define file path and view the first 6 rows.
 sales = pd.read_csv("C:/Users/Mohammad/Downloads/LaptopSales.csv")
+
 sales.head(6)
 
 ![image](https://user-images.githubusercontent.com/63278449/206063384-24f2616a-fc5a-4a6a-8832-fe211bdf6e66.png)
@@ -47,6 +48,7 @@ sales.isnull().any()
 
 ### Correlation Heatmap
 corr = sales.corr()
+
 corr
 
 ![image](https://user-images.githubusercontent.com/63278449/206058667-32ebb440-a4b9-44e7-a1d8-06d117c02b56.png)
@@ -119,7 +121,7 @@ plt.show()
 ![image](https://user-images.githubusercontent.com/63278449/206060808-9d8c3b4a-ce76-461f-a1f1-6b2eba3f7523.png)
 
 
-### For regression algorithms, we can use three evaluation metrics to evalute model performance:
+### For regression algorithms, we can use three evaluation metrics to evaluate model performance:
 1. Mean Squared Error (MSE) is the mean of the squared errors
 2. Mean Absolute Error (MAE) is the mean of the absolute value of the errors.
 3. Root Mean Squared Error (RMSE) is the square root of the mean of the squared errors
