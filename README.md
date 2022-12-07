@@ -22,25 +22,14 @@ import pandas as pd
 sales = pd.read_csv("C:/Users/Mohammad/Downloads/LaptopSales.csv")
 sales.head(6)
 
-Configuration Index RAM (GB) Processor Speeds (GHz) Integrated Wireless HD Size (GB) Bundled Applications Retail Price
-0 290 1 1.5 Yes 40 No 287
-1 208 2 1.5 No 300 No 329
-2 292 1 1.5 Yes 80 No 315
-3 342 2 1.5 Yes 120 No 357
-4 304 1 1.5 No 300 No 357
-5 347 2 1.5 No 80 Yes 364
+![image](https://user-images.githubusercontent.com/63278449/206063384-24f2616a-fc5a-4a6a-8832-fe211bdf6e66.png)
+![image](https://user-images.githubusercontent.com/63278449/206063419-373807d1-55f0-40b0-b4e4-5fc71c0fca82.png)
+
 
 # View data type of variables
 sales.dtypes
 
-Configuration Index       int64
-RAM (GB)                  int64
-Processor Speeds (GHz)    float64
-Integrated Wireless       object
-HD Size (GB)              int64
-Bundled Applications      object
-Retail Price              int64
-dtype:                    object
+![image](https://user-images.githubusercontent.com/63278449/206063484-0124a981-ba52-4882-8883-9066e2c1daca.png)
 
 # View summary statistics for numerical variables in the dataframe
 sales.describe()
@@ -52,14 +41,9 @@ sales.describe()
 
 sales.isnull().any()
 
-Configuration Index       False
-RAM (GB)                  False
-Processor Speeds (GHz)    False
-Integrated Wireless       False
-HD Size (GB)              False
-Bundled Applications      False
-Retail Price              False
-dtype:                     bool
+![image](https://user-images.githubusercontent.com/63278449/206063614-734772b7-f983-4659-ae61-453e3471ad64.png)
+![image](https://user-images.githubusercontent.com/63278449/206063672-6bdfc93c-f9d4-44cd-ae29-53394d9c4f0c.png)
+
 
 # Correlation Heatmap
 corr = sales.corr()
