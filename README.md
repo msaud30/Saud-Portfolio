@@ -90,8 +90,8 @@ coeff_df
 
 ![image](https://user-images.githubusercontent.com/63278449/206060168-c5de5a44-8eab-4b37-8be4-62d811d7c936.png)
 
-### statsmodels fits a line passing through the origin, it doesn't fit an intercept. Hence we use the command 'ad
-### statsmodels however provides a convenience function called add_constant that adds a constant column to input data set.
+### * Statsmodels fits a line passing through the origin, it doesn't fit an intercept. Hence we use the command 'ad
+### * Statsmodels however provides a convenience function called add_constant that adds a constant column to input data set.
 import statsmodels.api as sm
 X_train2 = sm.add_constant(X_train)
 est = sm.OLS(y_train, X_train2)
