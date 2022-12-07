@@ -7,13 +7,12 @@ machine learning libraries for Python. The dataset is "LaptopSales.csv". We make
 predict their sale price.
 
 # Data Dictinary
-Configuration Index: a score based on laptop performance
-RAM (GB):Random Access Memory
-Processor Speeds (GHz)
-Integrated Wireless?
-HD Size (GB): hard drive size
-Bundled Applications: a set of single software programs that are sold together. Common types of bundled software include operating
-systems, utilities and accessories sold with desktop or laptop computers
+* Configuration Index: a score based on laptop performance
+* RAM (GB):Random Access Memory
+* Processor Speeds (GHz)
+* Integrated Wireless?
+* HD Size (GB): hard drive size
+* Bundled Applications: a set of single software programs that are sold together. Common types of bundled software include operating systems, utilities and accessories sold with desktop or laptop computers
 
 
 # Read data into jupyter notebook
