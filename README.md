@@ -56,8 +56,11 @@ corr
 ### Creating Heat Map to show our correlated values by using seaborn and matplot libraries.
 import seaborn as sns
 import matplotlib.pyplot as plt
+
 plt.figure(figsize=(14, 6))
+
 sns.heatmap(corr, annot = True,cmap = sns.diverging_palette(20, 220, n=200))
+
 plt.title('Correlation Heatmap')
 
 Text(0.5, 1, 'Correlation Heatmap')
@@ -78,16 +81,22 @@ X
 ### Now we split the data into training set and test set. We use 80% of the data as the training set and the rest 20% of the data as test set.
 
 from sklearn.model_selection import train_test_split
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
 X_train.shape
 
 (20519, 6)
 
 ### Now we are ready to train a linear regression model on the training set and estimate the coefficients.
 from sklearn.linear_model import LinearRegression
+
 sales_regressor = LinearRegression()
+
 sales_regressor.fit(X_train, y_train)
+
 coeff_df = pd.DataFrame(sales_regressor.coef_, columns= X.columns)
+
 coeff_df
 
 ![image](https://user-images.githubusercontent.com/63278449/206060168-c5de5a44-8eab-4b37-8be4-62d811d7c936.png)
@@ -95,9 +104,13 @@ coeff_df
 ### Statsmodels fits a line passing through the origin, it doesn't fit an intercept. Hence we use the command 'ad
 ### Statsmodels however provides a convenience function called add_constant that adds a constant column to input data set.
 import statsmodels.api as sm
+
 X_train2 = sm.add_constant(X_train)
+
 est = sm.OLS(y_train, X_train2)
+
 est2 = est.fit()
+
 print(est2.summary())
 
 ![image](https://user-images.githubusercontent.com/63278449/206060459-faea549f-a720-4a4a-b8cd-d524ac90dbbf.png)
@@ -106,16 +119,24 @@ print(est2.summary())
 ### Evaluating the linear regression model
 
 y_train_pred = sales_regressor.predict(X_train)
+
 y_test_pred = sales_regressor.predict(X_test)
 
 ### Scatterplot for Residial and Predicted Values
 plt.figure(figsize = (15,8))
+
 plt.scatter(y_train_pred, y_train_pred-y_train, c='steelblue', marker = 'o', label = "Training data")
+
 plt.scatter(y_test_pred, y_test_pred-y_test, color = 'limegreen', marker = 's',label='Test data')
+
 plt.xlabel("Predicted Values")
+
 plt.ylabel("Residuals")
+
 plt.legend(loc = 'upper right')
+
 plt.hlines(y = 0,xmin = 200, xmax = 700, color = 'black', lw =2)
+
 plt.show()
 
 ![image](https://user-images.githubusercontent.com/63278449/206060808-9d8c3b4a-ce76-461f-a1f1-6b2eba3f7523.png)
@@ -128,11 +149,17 @@ plt.show()
 
 from sklearn import metrics
 import numpy as np
+
 print('Mean Absolute Error on Test Data:', metrics.mean_absolute_error(y_test, y_test_pred))
+
 print('Mean Absolute Error on Training Data:', metrics.mean_absolute_error(y_train, y_train_pred))
+
 print('Mean Squared Error on Test Data:', metrics.mean_squared_error(y_test, y_test_pred))
+
 print('Mean Squared Error on Training Data:', metrics.mean_squared_error(y_train, y_train_pred))
+
 print('Root Mean Squared Error on Test Data:', np.sqrt(metrics.mean_squared_error(y_test, y_test_pred)))
+
 print('Root Mean Squared Error on Training Data:', np.sqrt(metrics.mean_squared_error(y_train, y_train_pred)))
 
 ### Regression for both Test & Training predictions
@@ -140,9 +167,13 @@ print('Root Mean Squared Error on Training Data:', np.sqrt(metrics.mean_squared_
 
 ### R squared for both Test & Training predictions
 from sklearn.metrics import r2_score
+
 r_sq_test = r2_score(y_test, y_test_pred)
+
 r_sq_train = r2_score(y_train, y_train_pred)
+
 print('R squared on test set:', r_sq_test)
+
 print('R squared on training set:', r_sq_train)
 
 ![image](https://user-images.githubusercontent.com/63278449/206066732-0c3b3358-772b-40b7-8cee-e8a2e60f65dd.png)
