@@ -134,12 +134,7 @@ print('Root Mean Squared Error on Test Data:', np.sqrt(metrics.mean_squared_erro
 print('Root Mean Squared Error on Training Data:', np.sqrt(metrics.mean_squared_error(y_train, y_train_pred)))
 
 ### Regression for both Test & Training predictions
-Mean Absolute Error on Test Data: 21.591106737958842
-Mean Absolute Error on Training Data: 21.760198848831337
-Mean Squared Error on Test Data: 768.2924424521232
-Mean Squared Error on Training Data: 777.9861978009391
-Root Mean Squared Error on Test Data: 27.718088722928268
-Root Mean Squared Error on Training Data: 27.892403944460202
+![image](https://user-images.githubusercontent.com/63278449/206066549-60893953-dd4c-445d-94bb-b3bed7d098c0.png)
 
 ### R squared for both Test & Training predictions
 from sklearn.metrics import r2_score
@@ -148,8 +143,7 @@ r_sq_train = r2_score(y_train, y_train_pred)
 print('R squared on test set:', r_sq_test)
 print('R squared on training set:', r_sq_train)
 
-R squared on test set: 0.8323889325785557
-R squared on training set: 0.8350651328238885
+![image](https://user-images.githubusercontent.com/63278449/206066732-0c3b3358-772b-40b7-8cee-e8a2e60f65dd.png)
 
 ### Based on your final analysis, we can conclude both test set and training set performed almost equally well since R squared is almost the same.
 
