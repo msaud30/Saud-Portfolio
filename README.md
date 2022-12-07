@@ -1,12 +1,12 @@
-### Saud-Portfolio
+### Saud's-Portfolio
 Data Science Portfolio Example
 
-# Multiple Linear Regression
-Here is a multiple linear regression project I worked on which was implemented using Scikit-Learn, which is one of the most popular
+### Multiple Linear Regression
+Here is a multiple linear regression model I worked on which was implemented using Scikit-Learn, which is one of the most popular
 machine learning libraries for Python. The dataset is "LaptopSales.csv". We make use of features of laptops to
 predict their sale price.
 
-# Data Dictinary
+### Data Dictinary
 * Configuration Index: a score based on laptop performance
 * RAM (GB):Random Access Memory
 * Processor Speeds (GHz)
@@ -15,10 +15,10 @@ predict their sale price.
 * Bundled Applications: a set of single software programs that are sold together. Common types of bundled software include operating systems, utilities and accessories sold with desktop or laptop computers
 
 
-# Read data into jupyter notebook
+### Read data into jupyter notebook
 import pandas as pd
 
-# Define file path and view the first 6 rows.
+### Define file path and view the first 6 rows.
 sales = pd.read_csv("C:/Users/Mohammad/Downloads/LaptopSales.csv")
 sales.head(6)
 
@@ -26,18 +26,18 @@ sales.head(6)
 ![image](https://user-images.githubusercontent.com/63278449/206063419-373807d1-55f0-40b0-b4e4-5fc71c0fca82.png)
 
 
-# View data type of variables
+### View data type of variables
 sales.dtypes
 
 ![image](https://user-images.githubusercontent.com/63278449/206063484-0124a981-ba52-4882-8883-9066e2c1daca.png)
 
-# View summary statistics for numerical variables in the dataframe
+### View summary statistics for numerical variables in the dataframe
 sales.describe()
 
 ![image](https://user-images.githubusercontent.com/63278449/206057805-d2541d52-2785-4001-b5bd-01d78f1c4f6c.png)
 
 
-# We check for NaN values (missing values) in this dataset. All the columns return False value indicating that there are no missing values in this dataset.
+### We check for NaN values (missing values) in this dataset. All the columns return False value indicating that there are no missing values in this dataset.
 
 sales.isnull().any()
 
@@ -45,13 +45,13 @@ sales.isnull().any()
 ![image](https://user-images.githubusercontent.com/63278449/206063672-6bdfc93c-f9d4-44cd-ae29-53394d9c4f0c.png)
 
 
-# Correlation Heatmap
+### Correlation Heatmap
 corr = sales.corr()
 corr
 
 ![image](https://user-images.githubusercontent.com/63278449/206058667-32ebb440-a4b9-44e7-a1d8-06d117c02b56.png)
 
-# Creating Heat Map to show our correlated values by using seaborn and matplot libraries.
+### Creating Heat Map to show our correlated values by using seaborn and matplot libraries.
 import seaborn as sns
 import matplotlib.pyplot as plt
 plt.figure(figsize=(14, 6))
@@ -62,7 +62,7 @@ Text(0.5, 1, 'Correlation Heatmap')
 
 ![image](https://user-images.githubusercontent.com/63278449/206059429-d4c901f0-1364-4faa-a9a6-71ab8aa41ff7.png)
 
-# Next step is to divide the data into “attributes” and “labels”. X variable contains all the attributes/features and y variable contains the target variable.
+### Next step is to divide the data into “attributes” and “labels”. X variable contains all the attributes/features and y variable contains the target variable.
 
 X = pd.get_dummies(sales[['Configuration Index','RAM (GB)', 'Processor Speeds (GHz)', 'Integrated Wireless',
 'HD Size (GB)', 'Bundled Applications']], drop_first = True)
@@ -73,7 +73,7 @@ X
 ![image](https://user-images.githubusercontent.com/63278449/206059786-61d5a9c0-7876-475e-95b6-ce2137dd6c6b.png)
 ![image](https://user-images.githubusercontent.com/63278449/206059828-2743efd2-1f83-4060-97c9-44d9637c72a6.png)
 
-# Now we split the data into training set and test set, We will use 80% of the data as the training set and the rest 20% of the data as test set.
+### Now we split the data into training set and test set. We use 80% of the data as the training set and the rest 20% of the data as test set.
 
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -81,7 +81,7 @@ X_train.shape
 
 (20519, 6)
 
-# Now we are ready to train a linear regression model on the training set and estimate the coefficients.
+### Now we are ready to train a linear regression model on the training set and estimate the coefficients.
 from sklearn.linear_model import LinearRegression
 sales_regressor = LinearRegression()
 sales_regressor.fit(X_train, y_train)
@@ -90,8 +90,8 @@ coeff_df
 
 ![image](https://user-images.githubusercontent.com/63278449/206060168-c5de5a44-8eab-4b37-8be4-62d811d7c936.png)
 
-# statsmodels fits a line passing through the origin, it doesn't fit an intercept. Hence we use the command 'ad
-# statsmodels however provides a convenience function called add_constant that adds a constant column to input data set.
+### statsmodels fits a line passing through the origin, it doesn't fit an intercept. Hence we use the command 'ad
+### statsmodels however provides a convenience function called add_constant that adds a constant column to input data set.
 import statsmodels.api as sm
 X_train2 = sm.add_constant(X_train)
 est = sm.OLS(y_train, X_train2)
@@ -101,12 +101,12 @@ print(est2.summary())
 ![image](https://user-images.githubusercontent.com/63278449/206060459-faea549f-a720-4a4a-b8cd-d524ac90dbbf.png)
 
 
-# Evaluate the linear regression model
+### Evaluating the linear regression model
 
 y_train_pred = sales_regressor.predict(X_train)
 y_test_pred = sales_regressor.predict(X_test)
 
-# Scatterplot for Residial and Predicted Values
+### Scatterplot for Residial and Predicted Values
 plt.figure(figsize = (15,8))
 plt.scatter(y_train_pred, y_train_pred-y_train, c='steelblue', marker = 'o', label = "Training data")
 plt.scatter(y_test_pred, y_test_pred-y_test, color = 'limegreen', marker = 's',label='Test data')
@@ -119,7 +119,7 @@ plt.show()
 ![image](https://user-images.githubusercontent.com/63278449/206060808-9d8c3b4a-ce76-461f-a1f1-6b2eba3f7523.png)
 
 
-# For regression algorithms, we can use three evaluation metrics to evalute model performance:
+### For regression algorithms, we can use three evaluation metrics to evalute model performance:
 1. Mean Squared Error (MSE) is the mean of the squared errors
 2. Mean Absolute Error (MAE) is the mean of the absolute value of the errors.
 3. Root Mean Squared Error (RMSE) is the square root of the mean of the squared errors
@@ -133,7 +133,7 @@ print('Mean Squared Error on Training Data:', metrics.mean_squared_error(y_train
 print('Root Mean Squared Error on Test Data:', np.sqrt(metrics.mean_squared_error(y_test, y_test_pred)))
 print('Root Mean Squared Error on Training Data:', np.sqrt(metrics.mean_squared_error(y_train, y_train_pred)))
 
-# Regression for both Test & Training predictions
+### Regression for both Test & Training predictions
 Mean Absolute Error on Test Data: 21.591106737958842
 Mean Absolute Error on Training Data: 21.760198848831337
 Mean Squared Error on Test Data: 768.2924424521232
@@ -141,7 +141,7 @@ Mean Squared Error on Training Data: 777.9861978009391
 Root Mean Squared Error on Test Data: 27.718088722928268
 Root Mean Squared Error on Training Data: 27.892403944460202
 
-# R squared for both Test & Training predictions
+### R squared for both Test & Training predictions
 from sklearn.metrics import r2_score
 r_sq_test = r2_score(y_test, y_test_pred)
 r_sq_train = r2_score(y_train, y_train_pred)
@@ -151,7 +151,7 @@ print('R squared on training set:', r_sq_train)
 R squared on test set: 0.8323889325785557
 R squared on training set: 0.8350651328238885
 
-# Based on your final analysis, we can conclude both test set and training set performed almost equally well since R squared is almost the same.
+### Based on your final analysis, we can conclude both test set and training set performed almost equally well since R squared is almost the same.
 
 
 
